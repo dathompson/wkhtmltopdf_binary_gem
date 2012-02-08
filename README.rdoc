@@ -1,0 +1,30 @@
+WKHTMLTOPDF-BINARY
+
+    "a book publishing framework for today's publishing world"
+	
+wkhtmltopdf-binary is a gem for installing the wkhtmltopdf command line tool for converting html documents to pdf. This is essentially a collection of static builds from the wkhtmltopdf site: http://code.google.com/p/wkhtmltopdf
+
+== Getting Started
+
+=== System Requirements
+
+* Ruby v1.8.7 or higher http://www.ruby-lang.org/en/downloads/
+
+
+== Installation
+
+=== Install with the Gem
+
+    $ gem install wkhtmltopdf-binary
+
+=== Install Static Builds from the wkhtmltopdf website
+
+Note: If you choose to install the static builds, make sure to *UNINSTALL* the wkhtmltopdf-binary gem. Otherwise you will probably have a conflict in your PATH. Just issue +gem uninstall wkhtmltopdf-binary+.
+
+This gem install should work for most people. However, if it doesn't, we would recommend attempting to install the static builds on your own. You can download whichever version you like from the downloads section of the wkhtmltopdf site: http://code.google.com/p/wkhtmltopdf/downloads/list Make sure to select "All" from the dropdown if you are looking for older versions. The Windows and Mac OS's have install scripts. For *nix versions, or to install win/mac manually, just download a "static" version and unzip it into a location that can be called in your system PATH.
+
+=== Compile From Source and Install
+
+We would not really recommended this. It's not for the faint at heart. You will need to install QT and hack the heck out of ./configure. That said, here's a link for some help.
+
+http://code.google.com/p/wkhtmltopdf/wiki/compilation

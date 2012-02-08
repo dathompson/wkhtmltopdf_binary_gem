@@ -1,13 +1,9 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
-if RUBY_PLATFORM =~ /linux/
-  executable = 'wkhtmltopdf_linux_386'
-elsif RUBY_PLATFORM =~ /darwin/
-  executable = 'wkhtmltopdf_darwin_386'
-else
-  raise "Invalid platform. Must be running linux or intel-based Mac OS."
+begin
+  require "wkhtmltopdf-binary/wkhtmltopdf"
+rescue LoadError
+  wkhtmltopdf_path = File.expand_path('../../lib', __FILE__)
+  $:.unshift(wkhtmltopdf_path)
+  require "wkhtmltopdf"
 end
-
-executable = File.join(File.dirname(__FILE__), executable)
-system(executable + " " + $*.join(" "))
-

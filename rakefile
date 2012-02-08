@@ -1,20 +1,23 @@
+require 'bundler'
+require 'rake/clean'
 require 'rubygems'
-require 'rake/packagetask'
-require 'rake/gempackagetask'
+require 'cucumber'
+require 'cucumber/rake/task'
 
-spec = Gem::Specification.new do |s| 
-  s.name = "wkhtmltopdf-binary"
-  s.version = "0.1.9"
-  s.author = "Research Information Systems, The University of Iowa"
-  s.email = "vpr-ris-developers@iowa.uiowa.edu"
-  s.platform = Gem::Platform::RUBY
-  s.summary = "Provides binaries for WKHTMLTOPDF project in an easily accessible package."
-  s.files = FileList["{bin}/**/*"].to_a
-  s.has_rdoc = false
-  s.executables << "wkhtmltopdf"
-  s.require_path = '.'
+Bundler::GemHelper.install_tasks
+
+spec = eval(File.read('wkhtmltopdf_binary.gemspec'))
+
+require 'rake/testtask'
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/test*.rb']
 end
 
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.need_tar = true
+CLOBBER << 'tmp'
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features"
+  t.fork = false
 end
+
+task :default => :test
