@@ -1,6 +1,6 @@
-require "wkhtmltopdf_binary/version"
+require "wkhtmltopdfify/version"
 
-module WkhtmltopdfBinary
+module Wkhtmltopdfify
   if RUBY_PLATFORM =~ /linux/
     executable = 'bin/linux/wkhtmltopdf_linux_386'
   elsif RUBY_PLATFORM =~ /darwin/

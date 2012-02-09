@@ -6,7 +6,7 @@ require 'cucumber/rake/task'
 
 Bundler::GemHelper.install_tasks
 
-spec = eval(File.read('wkhtmltopdf_binary.gemspec'))
+spec = eval(File.read('wkhtmltopdfify.gemspec'))
 
 require 'rake/testtask'
 Rake::TestTask.new do |t|
